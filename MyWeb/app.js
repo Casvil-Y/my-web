@@ -16,10 +16,12 @@ function decodeBase64Utf8(b64) {
 
 function categorize(name) {
   const n = name.toLowerCase();
+  // 周历设计等含「设计」但不应进策划案，需优先判断
+  if (n.includes("周历")) return "其它";
   if (n.includes("拆解")) return "拆解案";
   if (n.includes("复盘") || n.includes("分析")) return "拆解案";
   if (n.includes("策划") || n.includes("方案") || n.includes("设计")) return "策划案";
-  return "其他文档";
+  return "其它";
 }
 
 function normalize(s) {
